@@ -1,0 +1,30 @@
+name: Auto Reboisasi
+
+on:
+  schedule:
+    # Jalan tiap hari jam 12:00 UTC (19:00 WIB)
+    - cron: '0 12 * * *'
+  workflow_dispatch: # Supaya bisa di-run manual juga di tab "Actions"
+
+jobs:
+  tanam_pohon:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup Git Credentials
+        run: |
+          git config --global user.name "naidrahiqa"
+          git config --global user.email "naidrahiqa@users.noreply.github.com"
+          
+      - name: Run Reboisasi Script
+        run: node index.js

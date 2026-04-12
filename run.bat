@@ -1,0 +1,6 @@
+@echo off
+echo Memulai proses reboisasi GitHub...
+node index.js
+echo.
+echo Proses selesai! Tekan tombol apa saja untuk menutup...
+pause >nul
