@@ -4,7 +4,13 @@ on:
   schedule:
     # Jalan tiap hari jam 12:00 UTC (19:00 WIB)
     - cron: '0 12 * * *'
+  push:
+    branches:
+      - main
   workflow_dispatch: # Supaya bisa di-run manual juga di tab "Actions"
+
+permissions:
+  contents: write
 
 jobs:
   tanam_pohon:
@@ -13,7 +19,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
       - name: Setup Node.js
@@ -24,7 +29,9 @@ jobs:
       - name: Setup Git Credentials
         run: |
           git config --global user.name "naidrahiqa"
-          git config --global user.email "naidrahiqa@users.noreply.github.com"
+          git config --global user.email "akufaqih1@gmail.com"
           
       - name: Run Reboisasi Script
         run: node index.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
