@@ -6,7 +6,7 @@ const FILE_PATH = path.join(__dirname, 'log.txt');
 
 // Customisasi jumlah commit di sini
 const MIN_COMMITS = 1;
-const MAX_COMMITS = 5;
+const MAX_COMMITS = 2;
 
 // Randomize jumlah commit hari ini biar keliatan natural di graph
 const commitsToday = Math.floor(Math.random() * (MAX_COMMITS - MIN_COMMITS + 1)) + MIN_COMMITS;
